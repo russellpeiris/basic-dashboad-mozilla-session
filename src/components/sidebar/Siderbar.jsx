@@ -6,7 +6,7 @@ import {
 import { Flex, Image, Menu, theme, Typography } from "antd";
 import Sider from "antd/es/layout/Sider";
 
-const Sidebar = () => {
+const Sidebar = ({ setMenu }) => {
 
     const { token: { colorBgContainer } } = theme.useToken();
 
@@ -31,7 +31,7 @@ const Sidebar = () => {
                         color: 'black',
                         margin: '0 0 0 16px',
                     }}
-                > Ant Design </Typography.Title>
+                > Dashboard </Typography.Title>
             </Flex>
             <Menu
                 style={{
@@ -39,24 +39,25 @@ const Sidebar = () => {
                     border: 'none',
                 }}
                 mode="inline"
-                defaultSelectedKeys={['1']}
+                defaultSelectedKeys={['home']}
                 items={[
                     {
-                        key: '1',
+                        key: 'home',
                         icon: <HomeFilled />,
                         label: 'Home',
                     },
                     {
-                        key: '2',
+                        key: 'users',
                         icon: <UserOutlined />,
                         label: 'Users',
                     },
                     {
-                        key: '3',
+                        key: 'payments',
                         icon: <PayCircleFilled />,
                         label: 'Payments',
                     },
                 ]}
+                onClick={({ key }) => setMenu(key)}
             />
         </Sider>
     )
